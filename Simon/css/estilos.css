@@ -1,0 +1,160 @@
+* {
+   box-sizing: border-box;
+   font: 20px Arial, Helvetica, sans-serif;
+}
+
+body {
+   margin: 0;
+   background:#fff url("../media/fondoApp.jpg") left top;
+   background-size: cover;
+}
+
+/** Contenedores *********************************************************** */
+
+body > div { /* Centrado de la página */
+   display: flex;
+   height: 100vh;
+   align-items: center;
+   justify-content: center;
+}
+
+#juego {
+   animation-duration: 0.5s;
+   animation-name: cambiarEscala;
+   animation-iteration-count: 1;
+   animation-direction: normal;
+}
+@keyframes cambiarEscala {
+   from {
+     opacity: 0;
+     transform: scale(0.9,0.9);
+   } to {
+     opacity: 1;
+     transform: scale(1,1);
+   }
+ }
+
+ #tablero, #info {
+   height: 486px;
+   margin: 10px;
+   padding: 50px;
+   border: 3px solid #363636;
+   border-radius: 50px;
+   box-shadow: 8px 0 10px -6px #2e2e2e, -8px 0 10px -6px #2e2e2e;
+   background: #ccc url("../media/fondoSimon.jpg") left top;
+   text-align: center;
+   user-select: none; /* Evita poder seleccionar texto de la página */
+   opacity: 0.8; /* Ganando suavidad global. Añadido aqui para evitar parpadeo de tonos durante la transición */
+ }
+
+/** Tablero SIMON ********************************************************** */
+
+#simon {
+   display: grid;
+   grid-template-columns: 175px 175px;
+   gap: 10px;
+   height: 380px;
+   width: 380px;
+   border: 10px solid #fff;
+   border-radius: 50%;
+   box-shadow: 0px 0px 50px #000, 0px 0px 50px #000;
+   background-color: #fff;
+   filter: blur(15px);
+   transition: filter 0.1s linear 0s;
+}
+#centro {
+   position: absolute;
+   left: 105px;
+   top: 105px;
+   height: 150px;
+   width: 150px;
+   border: 10px solid black;
+   border-radius: 50%;   
+   box-shadow: -5px -5px 20px #000 inset;
+   background-color: #555;
+   color: #fff;
+   font: bolder 30px Arial, Helvetica, sans-serif;
+   text-align: center;
+   line-height: 130px;
+}
+
+#color_0, #color_1, #color_2, #color_3 {
+   height: 175px;
+   width: 175px;
+   border: 3px solid #000;
+   transition: opacity 0.25s ease-in-out 0s; /* Se cambiará la opacidad programáticamente. Se usará esta transición */
+}
+#color_0 {
+   border-radius: 100% 0 0 0;
+   box-shadow: 2px 2px 4px #000;
+   background-color: #136c13;
+}
+#color_1 {
+   border-radius: 0 100% 0 0;
+   box-shadow: -2px 2px 4px #000;
+   background-color: #d92626;
+}
+#color_2 {
+   border-radius: 0 0 0 100%;
+   box-shadow: 2px -2px 4px #000;
+   background-color: #d9d926;
+}
+#color_3 {
+   border-radius: 0 0 100% 0;
+   box-shadow: -2px -2px 4px #000;
+   background-color: #2626d9;
+}
+#color_0:hover, #color_1:hover, #color_2:hover, #color_3:hover {
+   border: 10px solid #fff;
+}
+
+/** Zona INFO ************************************************************** */
+
+.titulo {
+   margin-top: 10px;
+   padding: 10px;
+   border: 1px solid #2e2e2e;
+   border-radius: 15px 15px 0 0;
+   background-color: #24284b;
+   color: #fff;
+}
+
+#puntuacion, #tiempoTurno, #colorTurno {
+   margin-bottom: 10px;
+   border: 1px solid #2e2e2e;
+   border-radius: 0 0 15px 15px;
+   background-color: #fff;
+   font-size: 40px;
+   font-weight: 900;
+}
+#colorTurno {
+   margin-top: 40px;
+   width: 15rem;
+   border-radius: 15px;
+   font-size: 30px;
+}
+
+#btnOnOff {
+   padding: 5px;
+   width: 300px;
+   border: 1px solid #2e2e2e;
+   border-radius: 15px;
+   background-color: #527e52;
+   color: #fff;
+   font-size: 30px;
+   font-weight: 700;
+   transition: background-color 0.1s ease-in-out 0s
+}
+#btnOnOff:hover {
+   background-color: #87b087;
+}
+
+/** Punteros y funcionalidad ratón ***************************************** */
+
+.punteroMano {
+   cursor: pointer;
+}
+
+.punteroProhibido {
+   cursor: not-allowed;
+}
