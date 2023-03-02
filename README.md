@@ -1,2 +1,3 @@
 # JSSimon
-Juego SIMON en javascript
+Juego SIMON en javascript.
+Uso de prototipos y promesas.
